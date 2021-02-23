@@ -63,6 +63,21 @@ Uses localStorage to store persistent data.
 ---
 ## Progress
     
+Step One:
+
+*Instructions and outline*
+
+    Html, css, javascript. 
+    I'm going to use bootstrap for the html, and jquery for the javascript. 
+    Form input for city name, that is variabled into the query string for the fetch api, and is also stored to local storage with a button dynamically created. 
+    Display data from api in the html.
+    Icon representation of weather which is in open weather (need to research)
+    If statement for background of UV index.
+    5 day forcast cards.
+
+![outline](assets/images/outlineWeatherSearch.jpg)
+
+    Above is the provided example site image, broken down into sections to make my bootstrap easier. It's color coded so each step down within the container is the same.
 
 ---
 ## Contributing
