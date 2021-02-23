@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+    <header class="jumbotron d-flex justify-content-center">
+        <h1>Weather Dashboard</h1>
+    </header>
+    <div class="container">
+        <div class="row">
+            <!-- Blue -->
+            <div class="col-4 h-100">
+                <!-- yellow -->
+                <div class="col-12 h-20">
+                    <label class="col-12">Search for a City:</label>
+                    <input type="text" class="form-control col-8">
+                    <button type="submit" class="btn btn-primary col-4" id="searchBtn">Search</button>
+                </div>
+                <!-- yellow2 -->
+                <div class="col-12">Dynamically gen buttons</div>
+            </div>
+            <!-- Blue -->
+            <div class="col-8 h-100">
+                <!-- yellow -->
+                <div class="col-12 h-60">Dynamically gen text current weather</div>
+                <!-- yellow2 -->
+                <div class="col-12 h-40">
+                    <div class="col-12">5-Day Forecast:</div>
+                    <div class="col-12 d-flex align-items-stretch justify-content-around">
+                        <div class="col-2">1</div>
+                        <div class="col-2">2</div>
+                        <div class="col-2">3</div>
+                        <div class="col-2">4</div>
+                        <div class="col-2">5</div>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+        </div>
+    </div>
+
+    <script src="assets/script.js"></script>
+</body>
+
+</html>
