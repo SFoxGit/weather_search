@@ -9,6 +9,7 @@
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <link rel="stylesheet" href="assets/style.css">
 </head>
 
@@ -23,7 +24,7 @@
                 <!-- yellow -->
                 <div class="col-12 h-20">
                     <label class="col-12">Search for a City:</label>
-                    <input type="text" class="form-control col-8">
+                    <input type="text" class="form-control col-8" id="city">
                     <button type="submit" class="btn btn-primary col-4" id="searchBtn">Search</button>
                 </div>
                 <!-- yellow2 -->
@@ -32,16 +33,23 @@
             <!-- Blue -->
             <div class="col-8 h-100">
                 <!-- yellow -->
-                <div class="col-12 h-60">Dynamically gen text current weather</div>
+                <div class="col-12 h-60">
+                    <div id="displayCity"></div>
+                    <div id="displayDate"></div>
+                    <div id="displayTemp"></div>
+                    <div id="displayHumidity"></div>
+                    <div id="displayWind"></div>
+                    <div id="displayUV"></div>
+                </div>
                 <!-- yellow2 -->
                 <div class="col-12 h-40">
                     <div class="col-12">5-Day Forecast:</div>
                     <div class="col-12 d-flex align-items-stretch justify-content-around">
-                        <div class="col-2">1</div>
-                        <div class="col-2">2</div>
-                        <div class="col-2">3</div>
-                        <div class="col-2">4</div>
-                        <div class="col-2">5</div>
+                        <div class="col-2" id="day1"></div>
+                        <div class="col-2" id="day2">2</div>
+                        <div class="col-2" id="day3">3</div>
+                        <div class="col-2" id="day4">4</div>
+                        <div class="col-2" id="day5">5</div>
                     </div>
                 </div>
 

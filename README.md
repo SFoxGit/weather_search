@@ -79,6 +79,24 @@ Step One:
 
     Above is the provided example site image, broken down into sections to make my bootstrap easier. It's color coded so each step down within the container is the same.
 
+Step Two:
+
+*html*
+
+    Created basic framework using bootstrap, I'm sure I'll have to go back and edit them all a bunch but that's fine because the design I outlined is there.
+
+Step Three:
+
+*javascript - buttons and api*
+
+    I'm breaking up the javascript into multiple segments, starting with button function, then fetching api. That'll be a big step. Having to use the lat lon from the first fetch to get the second fetch was fun. 
+
+*5 day forecast*
+
+    So in order to do a true forecast at noon each day you've got to do moment and then set time in hours/minutes/seconds and then add number of days. Problem with the free version of openweathermap, is that in order to do a 5 day forecast like in the example you need 6 days (today + 5) which isn't free. I like my solution on getting the data for noon each day, however it could be condensed into for loops.
+
+
+
 ---
 ## Contributing
 
