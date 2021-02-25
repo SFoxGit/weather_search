@@ -21,6 +21,7 @@ $(document).ready(function () {
                 var newButton = $('<button>');
                 newButton.text(searchArray[k]);
                 newButton.attr('class', 'btn col-12 btn-info previous');
+                newButton.attr('value', searchArray[k]);
                 $('#searchButtons').append(newButton);
             }
         }
@@ -133,6 +134,7 @@ var displayFiveDay = function (data) {
     for (var i = 0; i < 40; i++) {
         if (data.list[i].dt_txt === day1) {
             $('#date1').text(moment(data.list[i].dt_txt, "YYYY-MM-DD HH:mm:ss").format("MMM Do, hhA"));
+            $('#date1').parent().attr('class', 'col-2 forecast');
             $('#icon1').html("<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
             $('#temp1').text('Temperature: ' + data.list[i].main.temp);
             $('#humidity1').text('Humidity: ' + data.list[i].main.humidity);
@@ -140,25 +142,25 @@ var displayFiveDay = function (data) {
         }
         if (data.list[i].dt_txt === day2) {
             $('#date2').text(moment(data.list[i].dt_txt, "YYYY-MM-DD HH:mm:ss").format("MMM Do, hhA"));
-            $('#icon2').html("<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+            $('#date2').parent().attr('class', 'col-2 forecast')   ;         $('#icon2').html("<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
             $('#temp2').text('Temperature: ' + data.list[i].main.temp);
             $('#humidity2').text('Humidity: ' + data.list[i].main.humidity);
         }
         if (data.list[i].dt_txt === day3) {
             $('#date3').text(moment(data.list[i].dt_txt, "YYYY-MM-DD HH:mm:ss").format("MMM Do, hhA"));
-            $('#icon3').html("<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+            $('#date3').parent().attr('class', 'col-2 forecast') ;           $('#icon3').html("<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
             $('#temp3').text('Temperature: ' + data.list[i].main.temp);
             $('#humidity3').text('Humidity: ' + data.list[i].main.humidity);
         }
         if (data.list[i].dt_txt === day4) {
             $('#date4').text(moment(data.list[i].dt_txt, "YYYY-MM-DD HH:mm:ss").format("MMM Do, hhA"));
-            $('#icon4').html("<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+            $('#date4').parent().attr('class', 'col-2 forecast') ;           $('#icon4').html("<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
             $('#temp4').text('Temperature: ' + data.list[i].main.temp);
             $('#humidity4').text('Humidity: ' + data.list[i].main.humidity);
         }
         if (data.list[i].dt_txt === day5) {
             $('#date5').text(moment(data.list[i].dt_txt, "YYYY-MM-DD HH:mm:ss").format("MMM Do, hhA"));
-            $('#icon5').html("<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+            $('#date5').parent().attr('class', 'col-2 forecast');            $('#icon5').html("<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
             $('#temp5').text('Temperature: ' + data.list[i].main.temp);
             $('#humidity5').text('Humidity: ' + data.list[i].main.humidity);
         }
@@ -177,7 +179,7 @@ $('#searchBtn').on('click', function () {
         if (localStorage.getItem('weatherCity') !== null) {
             var cityLocal = JSON.parse(localStorage.getItem('weatherCity'));
             if (cityLocal.includes($('#city').val())) {
-                getWeather();
+                getWeather(city);
             } else {
                 cityLocal.unshift($('#city').val());
                 localStorage.setItem('weatherCity', JSON.stringify(cityLocal));

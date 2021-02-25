@@ -15,6 +15,8 @@ Shawn Fox
 - Deployed site: [GitHub Pages](https://sfoxgit.github.io/weather_search/)
 - GitHub: [SFoxGit](https://github.com/SFoxGit/weather_search)
 
+![Deployed Site](assets/images/deployed.jpg)
+
 ---
 ## Table of Contents
 
@@ -101,7 +103,16 @@ Step Three:
 
 *Generate buttons of past search*
 
-    
+    Possibly one of the most difficult parts. I set it up to limit the number of buttons, so things dont get out of hand. Issue with the way I did it, if you search X place then search a lot of others you wont be able to get it back into your recent searches, so just need to trim the local storage or in my check for save to local replace prexisting.
+
+*index background*
+
+    Suprisingly difficult, or at least I made it that way for myself. Ended up just hard coding the background into javascript.
+
+
+Final thoughts:
+
+This really badly needs a refactor, I could have condensed this code down a ton. But time is limited. The functionality of this is great! 
 
 
 ---
@@ -112,3 +123,9 @@ Step Three:
 ## Credits
 
 [Open Weather](https://openweathermap.org/)
+
+Bootstrap
+
+Bootswatch
+
+fontawesome

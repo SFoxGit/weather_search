@@ -18,3 +18,14 @@ div.danger {
     background-color: blue;
     color: white;
 }
+
+.forecast {
+    background-color: teal;
+    margin: 10px, 0px;
+    padding: 10px;
+}
+
+.forecast > * {
+    color: white;
+    padding: 4px;
+}
