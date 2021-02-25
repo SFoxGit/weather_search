@@ -1,4 +1,4 @@
-console.log("test js")
+console.log("test js");
 
 $(document).ready(function () {
     var searchArray = JSON.parse(localStorage.getItem('weatherCity'));
@@ -8,27 +8,37 @@ $(document).ready(function () {
         console.log(searchArray.length);
         if (searchArray.length > 8) {
             console.log('test buttons2');
-            for (var j = 0 ; j > 8; j++) {
-                searchButtons.html('<button type="submit" class="btn btn-primary col-12" id="search"' + j + '>' + searchArray[j] + '</button>');
-                console.log('test buttons3');
+            for (var k = 0; k < 8; k++) {
+                var newButton = $('<button>');
+                newButton.text(searchArray[k]);
+                newButton.attr('class', 'btn col-12 previous');
+                newButton.attr('value', searchArray[k]);
+                $('#searchButtons').append(newButton);
             }
         } else {
-            for (var k = 0 ; k < searchArray.length; k++) {
-                console.log(searchArray[k])
-               var newButton = $('<button>');
-               newButton.text(searchArray[k]);
-               newButton.attr('class', 'btn col-12');
-               $('#searchButtons').append(newButton);
+            for (var k = 0; k < searchArray.length; k++) {
+                console.log(searchArray[k]);
+                var newButton = $('<button>');
+                newButton.text(searchArray[k]);
+                newButton.attr('class', 'btn col-12 btn-info previous');
+                $('#searchButtons').append(newButton);
             }
         }
+        $("button").on('click', function () {
+            if ($(this).attr("value") !== null) {
+                var buttonInput = $(this).attr("value");
+                console.log('testnewbutton');
+                getWeather(buttonInput);
+            }
+        });
     }
 });
 
 
 
 // fetch api
-var getWeather = function () {
-    var city = $('#city').val();
+var getWeather = function (city) {
+    // var city = $('#city').val();
     var currentWeather = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=75fcee501c9d242a8f19bcd9b354babd';
     console.log(currentWeather);
     fetch(currentWeather)
@@ -42,7 +52,7 @@ var getWeather = function () {
         })
         .catch(function (error) { }
         );
-}
+};
 
 
 // append data to html
@@ -57,22 +67,40 @@ var displayCurrent = function (data, city) {
     $('#displayTemp').text('Temperature: ' + temp);
     $('#displayHumidity').text('Humidity: ' + humidity);
     $('#displayWind').text('Wind Speed: ' + wind);
-    uvIndex(data.coord.lat, data.coord.lon)
+    uvIndex(data.coord.lat, data.coord.lon);
 };
 
 // fetch uvindex
 
 var uvIndex = function (lat, lon) {
-    var getUV = 'http://api.openweathermap.org/data/2.5/uvi?lat=' + lat + '&lon=' + lon + '&appid=75fcee501c9d242a8f19bcd9b354babd'
+    var getUV = 'http://api.openweathermap.org/data/2.5/uvi?lat=' + lat + '&lon=' + lon + '&appid=75fcee501c9d242a8f19bcd9b354babd';
+    var uvEl = $('#displayUV');
     fetch(getUV)
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
-                    $('#displayUV').text('UV Index: ' + data.value)
-                })
+                    console.log(data);
+                    var dataInt = data.value;
+                    var uvDisp = $('<div>');
+                    if (data.value < 2.1) {
+                        uvDisp.attr('class', 'col-12 success p-0');
+                        uvDisp.css('background-color', 'green')
+                    } else if (data.value < 5.5) {
+                        uvDisp.attr('class', 'col-12 warning p-0');
+                        uvDisp.css('background-color', 'yellow')
+                    } else {
+                        uvDisp.attr('class', 'col-12 danger p-0');
+                        uvDisp.css('background-color', 'red')
+                    };
+                    uvDisp.text('UV Index: ' + data.value);
+                    uvDisp.attr('id', "uvDisplay");
+                    uvEl.empty();
+                        $('#displayUV').append(uvDisp);
+                   
+                });
             }
-        })
-}
+        });
+};
 
 // fetching 5 day forecast
 
@@ -91,7 +119,7 @@ var fiveDay = function (city) {
         .catch(function (error) { }
         );
 
-}
+};
 
 // display 5 day forecast
 // put this in a for loop
@@ -101,7 +129,7 @@ var displayFiveDay = function (data) {
     var day3 = moment().hour(12).minute(0).second(0).add(3, 'd').format('YYYY-MM-DD HH:mm:ss');
     var day4 = moment().hour(12).minute(0).second(0).add(4, 'd').format('YYYY-MM-DD HH:mm:ss');
     var day5 = moment().hour(12).minute(0).second(0).add(5, 'd').format('YYYY-MM-DD HH:mm:ss');
-    $('#5day').text("5-Day Forecast:")
+    $('#5day').text("5-Day Forecast:");
     for (var i = 0; i < 40; i++) {
         if (data.list[i].dt_txt === day1) {
             $('#date1').text(moment(data.list[i].dt_txt, "YYYY-MM-DD HH:mm:ss").format("MMM Do, hhA"));
@@ -135,8 +163,8 @@ var displayFiveDay = function (data) {
             $('#humidity5').text('Humidity: ' + data.list[i].main.humidity);
         }
     }
-    console.log(day1)
-}
+    console.log(day1);
+};
 
 // save search to local
 
@@ -144,21 +172,23 @@ var displayFiveDay = function (data) {
 // button function for search
 // add upperCase validation later
 $('#searchBtn').on('click', function () {
+    var city = $('#city').val();
     if ($('#city').val() !== "") {
         if (localStorage.getItem('weatherCity') !== null) {
             var cityLocal = JSON.parse(localStorage.getItem('weatherCity'));
             if (cityLocal.includes($('#city').val())) {
-                getWeather()
+                getWeather();
             } else {
                 cityLocal.unshift($('#city').val());
-                localStorage.setItem('weatherCity', JSON.stringify(cityLocal))
+                localStorage.setItem('weatherCity', JSON.stringify(cityLocal));
             }
         } else {
             var cityLocal = [];
             cityLocal.push($('#city').val());
             localStorage.setItem('weatherCity', JSON.stringify(cityLocal));
         }
-        getWeather();
+        getWeather(city);
     }
-})
+});
 // button function for generated cities
+// had to move inside function

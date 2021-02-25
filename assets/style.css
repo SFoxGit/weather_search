@@ -1,0 +1,20 @@
+div.success {
+    background-color: green;
+};
+
+div.warning {
+    background-color: orange;
+};
+
+.hi {
+    background-color: orangered;
+};
+
+div.danger {
+    background-color: red;
+}
+
+.card {
+    background-color: blue;
+    color: white;
+}
