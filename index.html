@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
     <link rel="stylesheet" href="assets/style.css">
@@ -22,39 +25,66 @@
             <!-- Blue -->
             <div class="col-4 h-100">
                 <!-- yellow -->
-                <div class="col-12 h-20">
+                <div class="input-group col-12 h-20">
                     <label class="col-12">Search for a City:</label>
                     <input type="text" class="form-control col-8" id="city">
-                    <button type="submit" class="btn btn-primary col-4" id="searchBtn">Search</button>
+                    <button type="submit" class="btn btn-primary col-4" id="searchBtn"><i class="fas fa-search"></i></button>
                 </div>
                 <!-- yellow2 -->
-                <div class="col-12">Dynamically gen buttons</div>
+                <div class="row" id="searchButtons">
+                </div>
             </div>
             <!-- Blue -->
             <div class="col-8 h-100">
                 <!-- yellow -->
                 <div class="col-12 h-60">
-                    <div id="displayCity"></div>
-                    <div id="displayDate"></div>
-                    <div id="displayTemp"></div>
-                    <div id="displayHumidity"></div>
-                    <div id="displayWind"></div>
-                    <div id="displayUV"></div>
+                    <div class="row d-flex justify-content-start">
+                        <div class="col-4" id="displayCity"></div>
+                        <div class="col-4" id="currentIcon"></div>
+                        <div class="col-12" id="displayTemp"></div>
+                        <div class="col-12" id="displayHumidity"></div>
+                        <div class="col-12" id="displayWind"></div>
+                        <div class="col-12" id="displayUV"></div>
+                    </div>
                 </div>
                 <!-- yellow2 -->
                 <div class="col-12 h-40">
-                    <div class="col-12">5-Day Forecast:</div>
+                    <div class="col-12" id="5day"></div>
                     <div class="col-12 d-flex align-items-stretch justify-content-around">
-                        <div class="col-2" id="day1"></div>
-                        <div class="col-2" id="day2">2</div>
-                        <div class="col-2" id="day3">3</div>
-                        <div class="col-2" id="day4">4</div>
-                        <div class="col-2" id="day5">5</div>
+                        <div class="col-2" id="day1">
+                            <div id="date1"></div>
+                            <div id="icon1"></div>
+                            <div id="temp1"></div>
+                            <div id="humidity1"></div>
+                        </div>
+                        <div class="col-2" id="day2">
+                            <div id="date2"></div>
+                            <div id="icon2"></div>
+                            <div id="temp2"></div>
+                            <div id="humidity2"></div>
+                        </div>
+                        <div class="col-2" id="day3">
+                            <div id="date3"></div>
+                            <div id="icon3"></div>
+                            <div id="temp3"></div>
+                            <div id="humidity3"></div>
+                        </div>
+                        <div class="col-2" id="day4">
+                            <div id="date4"></div>
+                            <div id="icon4"></div>
+                            <div id="temp4"></div>
+                            <div id="humidity4"></div>
+                        </div>
+                        <div class="col-2" id="day5">
+                            <div id="date5"></div>
+                            <div id="icon5"></div>
+                            <div id="temp5"></div>
+                            <div id="humidity5"></div>
+                        </div>
                     </div>
                 </div>
 
             </div>
-
 
 
         </div>

@@ -1,5 +1,30 @@
 console.log("test js")
 
+$(document).ready(function () {
+    var searchArray = JSON.parse(localStorage.getItem('weatherCity'));
+    console.log(searchArray.length);
+    if (searchArray !== null) {
+        var searchButtons = $('#searchButtons');
+        console.log(searchArray.length);
+        if (searchArray.length > 8) {
+            console.log('test buttons2');
+            for (var j = 0 ; j > 8; j++) {
+                searchButtons.html('<button type="submit" class="btn btn-primary col-12" id="search"' + j + '>' + searchArray[j] + '</button>');
+                console.log('test buttons3');
+            }
+        } else {
+            for (var k = 0 ; k < searchArray.length; k++) {
+                console.log(searchArray[k])
+               var newButton = $('<button>');
+               newButton.text(searchArray[k]);
+               newButton.attr('class', 'btn col-12');
+               $('#searchButtons').append(newButton);
+            }
+        }
+    }
+});
+
+
 
 // fetch api
 var getWeather = function () {
@@ -13,7 +38,7 @@ var getWeather = function () {
                     displayCurrent(data, city);
                     fiveDay(city);
                 });
-            } 
+            }
         })
         .catch(function (error) { }
         );
@@ -27,8 +52,8 @@ var displayCurrent = function (data, city) {
     var temp = data.main.temp;
     var humidity = data.main.humidity;
     var wind = data.wind.speed;
-    $('#displayCity').text(city);
-    $('#displayDate').text(today);
+    $('#displayCity').text(data.name + " " + today);
+    $("#currentIcon").html("<img src='http://openweathermap.org/img/w/" + data.weather[0].icon + ".png' alt='Icon depicting current weather.'>");
     $('#displayTemp').text('Temperature: ' + temp);
     $('#displayHumidity').text('Humidity: ' + humidity);
     $('#displayWind').text('Wind Speed: ' + wind);
@@ -40,9 +65,9 @@ var displayCurrent = function (data, city) {
 var uvIndex = function (lat, lon) {
     var getUV = 'http://api.openweathermap.org/data/2.5/uvi?lat=' + lat + '&lon=' + lon + '&appid=75fcee501c9d242a8f19bcd9b354babd'
     fetch(getUV)
-        .then(function(response){
+        .then(function (response) {
             if (response.ok) {
-                response.json().then(function (data){
+                response.json().then(function (data) {
                     $('#displayUV').text('UV Index: ' + data.value)
                 })
             }
@@ -61,7 +86,7 @@ var fiveDay = function (city) {
                     console.log(data);
                     displayFiveDay(data);
                 });
-            } 
+            }
         })
         .catch(function (error) { }
         );
@@ -69,32 +94,47 @@ var fiveDay = function (city) {
 }
 
 // display 5 day forecast
-
-var displayFiveDay = function(data) {
+// put this in a for loop
+var displayFiveDay = function (data) {
     var day1 = moment().hour(12).minute(0).second(0).add(1, 'd').format('YYYY-MM-DD HH:mm:ss');
     var day2 = moment().hour(12).minute(0).second(0).add(2, 'd').format('YYYY-MM-DD HH:mm:ss');
     var day3 = moment().hour(12).minute(0).second(0).add(3, 'd').format('YYYY-MM-DD HH:mm:ss');
     var day4 = moment().hour(12).minute(0).second(0).add(4, 'd').format('YYYY-MM-DD HH:mm:ss');
     var day5 = moment().hour(12).minute(0).second(0).add(5, 'd').format('YYYY-MM-DD HH:mm:ss');
-    
+    $('#5day').text("5-Day Forecast:")
     for (var i = 0; i < 40; i++) {
         if (data.list[i].dt_txt === day1) {
-            $('#day1').text(data.list[i].main.temp);
+            $('#date1').text(moment(data.list[i].dt_txt, "YYYY-MM-DD HH:mm:ss").format("MMM Do, hhA"));
+            $('#icon1').html("<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+            $('#temp1').text('Temperature: ' + data.list[i].main.temp);
+            $('#humidity1').text('Humidity: ' + data.list[i].main.humidity);
+
         }
         if (data.list[i].dt_txt === day2) {
-            $('#day2').text(data.list[i].main.temp);
+            $('#date2').text(moment(data.list[i].dt_txt, "YYYY-MM-DD HH:mm:ss").format("MMM Do, hhA"));
+            $('#icon2').html("<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+            $('#temp2').text('Temperature: ' + data.list[i].main.temp);
+            $('#humidity2').text('Humidity: ' + data.list[i].main.humidity);
         }
         if (data.list[i].dt_txt === day3) {
-            $('#day3').text(data.list[i].main.temp);
+            $('#date3').text(moment(data.list[i].dt_txt, "YYYY-MM-DD HH:mm:ss").format("MMM Do, hhA"));
+            $('#icon3').html("<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+            $('#temp3').text('Temperature: ' + data.list[i].main.temp);
+            $('#humidity3').text('Humidity: ' + data.list[i].main.humidity);
         }
         if (data.list[i].dt_txt === day4) {
-            $('#day4').text(data.list[i].main.temp);
+            $('#date4').text(moment(data.list[i].dt_txt, "YYYY-MM-DD HH:mm:ss").format("MMM Do, hhA"));
+            $('#icon4').html("<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+            $('#temp4').text('Temperature: ' + data.list[i].main.temp);
+            $('#humidity4').text('Humidity: ' + data.list[i].main.humidity);
         }
         if (data.list[i].dt_txt === day5) {
-            $('#day5').text(data.list[i].main.temp);
+            $('#date5').text(moment(data.list[i].dt_txt, "YYYY-MM-DD HH:mm:ss").format("MMM Do, hhA"));
+            $('#icon5').html("<img src='http://openweathermap.org/img/w/" + data.list[i].weather[0].icon + ".png' alt='Icon depicting current weather.'>");
+            $('#temp5').text('Temperature: ' + data.list[i].main.temp);
+            $('#humidity5').text('Humidity: ' + data.list[i].main.humidity);
         }
     }
-    // var day1 = data.indexOf();
     console.log(day1)
 }
 
@@ -102,7 +142,23 @@ var displayFiveDay = function(data) {
 
 
 // button function for search
-$('#searchBtn').on('click', function() {
-    getWeather();
+// add upperCase validation later
+$('#searchBtn').on('click', function () {
+    if ($('#city').val() !== "") {
+        if (localStorage.getItem('weatherCity') !== null) {
+            var cityLocal = JSON.parse(localStorage.getItem('weatherCity'));
+            if (cityLocal.includes($('#city').val())) {
+                getWeather()
+            } else {
+                cityLocal.unshift($('#city').val());
+                localStorage.setItem('weatherCity', JSON.stringify(cityLocal))
+            }
+        } else {
+            var cityLocal = [];
+            cityLocal.push($('#city').val());
+            localStorage.setItem('weatherCity', JSON.stringify(cityLocal));
+        }
+        getWeather();
+    }
 })
 // button function for generated cities

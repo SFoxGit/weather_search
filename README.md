@@ -95,6 +95,13 @@ Step Three:
 
     So in order to do a true forecast at noon each day you've got to do moment and then set time in hours/minutes/seconds and then add number of days. Problem with the free version of openweathermap, is that in order to do a 5 day forecast like in the example you need 6 days (today + 5) which isn't free. I like my solution on getting the data for noon each day, however it could be condensed into for loops.
 
+*local storage*
+
+    For the save to local storage I needed a few ifs, check if it was null which if it was we had to create the array, then push the input value. If it did exist we need to take it and parse it. If the input value was already present in the local storage array we need to just move on, if it's not present we need to push it. I chose to unshift instead of push because I want to generate the buttons from the start of the array. 
+
+*Generate buttons of past search*
+
+    
 
 
 ---
