@@ -74,7 +74,7 @@ var displayCurrent = function (data, city) {
 // fetch uvindex
 
 var uvIndex = function (lat, lon) {
-    var getUV = 'http://api.openweathermap.org/data/2.5/uvi?lat=' + lat + '&lon=' + lon + '&appid=75fcee501c9d242a8f19bcd9b354babd';
+    var getUV = 'https://api.openweathermap.org/data/2.5/uvi?lat=' + lat + '&lon=' + lon + '&appid=75fcee501c9d242a8f19bcd9b354babd';
     var uvEl = $('#displayUV');
     fetch(getUV)
         .then(function (response) {
@@ -106,7 +106,7 @@ var uvIndex = function (lat, lon) {
 // fetching 5 day forecast
 
 var fiveDay = function (city) {
-    var fiveForecast = 'http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=75fcee501c9d242a8f19bcd9b354babd';
+    var fiveForecast = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=75fcee501c9d242a8f19bcd9b354babd';
     console.log(fiveForecast);
     fetch(fiveForecast)
         .then(function (response) {
