@@ -14,18 +14,52 @@ div.danger {
     background-color: red;
 }
 
-.card {
-    background-color: blue;
-    color: white;
-}
+
 
 .forecast {
-    background-color: teal;
-    margin: 10px, 0px;
-    padding: 10px;
+    background-color: #379683;
+    box-shadow: black 4px 4px 3px 1px;
+
 }
 
 .forecast > * {
     color: white;
     padding: 4px;
 }
+
+.previous {
+    background-color: #7395AE;
+}
+
+#searchButtons > * {
+    box-shadow: black 4px 4px 3px 1px;
+}
+
+body {
+    background-color: #5D5C61;
+    color: white;
+}
+
+.jumbotron {
+    background-color: #557A95;
+}
+
+.fiveDayBG {
+    background-color: #557A95;
+    box-shadow: black 4px 4px 3px 1px;
+    
+}
+
+.searchCont {
+    background-color: #557A95;
+    font-weight: bold;
+    font-size: large;
+    box-shadow: black 4px 4px 3px 1px;
+}
+
+.currentCont {
+    background-color: #557A95;
+    box-shadow: black 4px 4px 3px 1px;
+}
+
+

@@ -19,73 +19,74 @@
 
 <body>
     <header class="jumbotron d-flex justify-content-center">
-        <h1>Weather Dashboard</h1>
+        <h1 class="text-center">Weather Dashboard</h1>
     </header>
     <div class="container-fluid">
-        <div class="row">
-            <!-- Blue -->
-            <div class="col-4 h-100">
-                <!-- yellow -->
-                <div class="input-group col-12 h-20">
+        <div class="row m-2">
+            <div class="col-12 col-md-4 h-100">
+                <div class="input-group row h-20 border border-2 rounded searchCont p-2 m-2">
                     <label class="col-12">Search for a City:</label>
                     <input type="text" class="form-control col-10" id="city">
                     <button type="submit" class="btn btn-primary col-2" id="searchBtn"><i
                             class="fas fa-search"></i></button>
                 </div>
-                <!-- yellow2 -->
-                <div class="row" id="searchButtons">
+                <div class="row m-2" id="searchButtons">
                 </div>
             </div>
-            <!-- Blue -->
-            <div class="col-8 h-100">
-                <!-- yellow -->
-                <div class="col-12 h-60">
-                    <div class="row d-flex justify-content-start mb-2">
-                        <div class="col-4" id="displayCity"></div>
-                        <div class="col-12" id="currentIcon"></div>
-                        <div class="col-12" id="displayTemp"></div>
-                        <div class="col-12" id="displayHumidity"></div>
-                        <div class="col-12" id="displayWind"></div>
-                        <div class="col-12" id="displayUV"></div>
-                    </div>
-                </div>
-                <!-- yellow2 -->
-                <div class="col-12 h-40">
-                    <div class="col-12" id="5day"></div>
-                    <div class="col-12 d-flex align-items-stretch justify-content-around">
-                        <div class="col-2 " id="day1">
-                            <div class="" id="date1"></div>
-                            <div class="" id="icon1"></div>
-                            <div class="" id="temp1"></div>
-                            <div class="" id="humidity1"></div>
-                        </div>
-                        <div class="col-2 " id="day2">
-                            <div class="" id="date2"></div>
-                            <div class="" id="icon2"></div>
-                            <div class="" id="temp2"></div>
-                            <div class="" id="humidity2"></div>
-                        </div>
-                        <div class="col-2 " id="day3">
-                            <div class="" id="date3"></div>
-                            <div class="" id="icon3"></div>
-                            <div class="" id="temp3"></div>
-                            <div class="" id="humidity3"></div>
-                        </div>
-                        <div class="col-2 " id="day4">
-                            <div class="" id="date4"></div>
-                            <div class="" id="icon4"></div>
-                            <div class="" id="temp4"></div>
-                            <div class="" id="humidity4"></div>
-                        </div>
-                        <div class="col-2 " id="day5">
-                            <div class="" id="date5"></div>
-                            <div class="" id="icon5"></div>
-                            <div class="" id="temp5"></div>
-                            <div class="" id="humidity5"></div>
+            <div class="col-12 col-md-8 h-100">
+                <div class="row m-2 ">
+                    <div class="col-12 h-60" id="currentCont">
+                        <div class="row d-flex justify-content-start mb-2 p-2">
+                            <div class="col-12 m-1 h2" id="displayCity"></div>
+                            <div class="col-12 m-1" id="currentIcon"></div>
+                            <div class="col-12 m-1" id="displayTemp"></div>
+                            <div class="col-12 m-1" id="displayHumidity"></div>
+                            <div class="col-12 m-1" id="displayWind"></div>
+                            <div class="col-12 m-1" >
+                                <div class="row no-gutters" id="displayUV"></div>
+                            </div>
                         </div>
                     </div>
+                    <div class="col-12 m-4 " id="5dayMain">
+                        <div class="row p-2">
+                            <div class="col-12 h2 mb-2 text-white" id="5day"></div>
+                            <div class="col-12" id="5dayCards">
+                                <div class="row row-cols-xs-1 row-cols-lg-6 d-flex flex-row justify-content-around">
+                                    <div class="col-12 " id="day1">
+                                        <div class="" id="date1"></div>
+                                        <div class="" id="icon1"></div>
+                                        <div class="" id="temp1"></div>
+                                        <div class="" id="humidity1"></div>
+                                    </div>
+                                    <div class="col-12 " id="day2">
+                                        <div class="" id="date2"></div>
+                                        <div class="" id="icon2"></div>
+                                        <div class="" id="temp2"></div>
+                                        <div class="" id="humidity2"></div>
+                                    </div>
+                                    <div class="col-12 " id="day3">
+                                        <div class="" id="date3"></div>
+                                        <div class="" id="icon3"></div>
+                                        <div class="" id="temp3"></div>
+                                        <div class="" id="humidity3"></div>
+                                    </div>
+                                    <div class="col-12 " id="day4">
+                                        <div class="" id="date4"></div>
+                                        <div class="" id="icon4"></div>
+                                        <div class="" id="temp4"></div>
+                                        <div class="" id="humidity4"></div>
+                                    </div>
+                                    <div class="col-12 " id="day5">
+                                        <div class="" id="date5"></div>
+                                        <div class="" id="icon5"></div>
+                                        <div class="" id="temp5"></div>
+                                        <div class="" id="humidity5"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-
             </div>
 
 
