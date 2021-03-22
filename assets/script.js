@@ -1,13 +1,7 @@
-console.log("test js");
-
 $(document).ready(function () {
     var searchArray = JSON.parse(localStorage.getItem('weatherCity'));
-    console.log(searchArray.length);
     if (searchArray !== null) {
-        var searchButtons = $('#searchButtons');
-        console.log(searchArray.length);
         if (searchArray.length > 10) {
-            console.log('test buttons2');
             for (var k = 0; k < 10; k++) {
                 var newButton = $('<button>');
                 newButton.text(searchArray[k]);
@@ -17,7 +11,6 @@ $(document).ready(function () {
             }
         } else {
             for (var k = 0; k < searchArray.length; k++) {
-                console.log(searchArray[k]);
                 var newButton = $('<button>');
                 newButton.text(searchArray[k]);
                 newButton.attr('class', 'btn col-12 btn-info previous my-1');
@@ -28,7 +21,6 @@ $(document).ready(function () {
         $("button").on('click', function () {
             if ($(this).attr("value") !== null) {
                 var buttonInput = $(this).attr("value");
-                console.log('testnewbutton');
                 getWeather(buttonInput);
             }
         });
@@ -41,7 +33,6 @@ $(document).ready(function () {
 var getWeather = function (city) {
     // var city = $('#city').val();
     var currentWeather = 'https://api.openweathermap.org/data/2.5/weather?q=' + city + '&units=imperial&appid=75fcee501c9d242a8f19bcd9b354babd';
-    console.log(currentWeather);
     fetch(currentWeather)
         .then(function (response) {
             if (response.ok) {
@@ -58,7 +49,6 @@ var getWeather = function (city) {
 
 // append data to html
 var displayCurrent = function (data, city) {
-    console.log(data);
     var today = moment().format("MMMM Do, YYYY");
     var temp = data.main.temp;
     var humidity = data.main.humidity;
@@ -81,7 +71,6 @@ var uvIndex = function (lat, lon) {
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
-                    console.log(data);
                     var dataInt = data.value;
                     var uvDisp = $('<div>');
                     if (data.value < 2.1) {
@@ -110,12 +99,10 @@ var uvIndex = function (lat, lon) {
 
 var fiveDay = function (city) {
     var fiveForecast = 'https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&units=imperial&appid=75fcee501c9d242a8f19bcd9b354babd';
-    console.log(fiveForecast);
     fetch(fiveForecast)
         .then(function (response) {
             if (response.ok) {
                 response.json().then(function (data) {
-                    console.log(data);
                     displayFiveDay(data);
                     $('#5dayMain').attr('class', 'col-12 h-80 mt-4 p-3 border border-dark rounded border-3 fiveDayBG')
                 });
@@ -129,6 +116,7 @@ var fiveDay = function (city) {
 // display 5 day forecast
 // put this in a for loop
 var displayFiveDay = function (data) {
+    console.log(data.list);
     var day1 = moment().hour(12).minute(0).second(0).add(1, 'd').format('YYYY-MM-DD HH:mm:ss');
     var day2 = moment().hour(12).minute(0).second(0).add(2, 'd').format('YYYY-MM-DD HH:mm:ss');
     var day3 = moment().hour(12).minute(0).second(0).add(3, 'd').format('YYYY-MM-DD HH:mm:ss');
@@ -169,7 +157,6 @@ var displayFiveDay = function (data) {
             $('#humidity5').text('Humidity: ' + data.list[i].main.humidity);
         }
     }
-    console.log(day1);
 };
 
 // save search to local
